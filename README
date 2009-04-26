@@ -1,0 +1,76 @@
+
+tilelife 0.1 [April 2009]
+
+Implementation of a tiled variant of Conway's Game of Life.
+
+AUTHOR:
+======================================
+Paul Butler <http://paulbutler.org/>
+
+REQUIREMENTS:
+======================================
+Python
+
+Tested on Python 2.6.2, but any recent version of Python should work. No other
+requirements.
+
+INSTRUCTIONS:
+======================================
+tilelife uses a simple plain-text format to represent the world.
+Each printable character in the file represents a cell. The character
+'.' is a dead cell, and the character 'x' is a live cell. (Technically,
+any other character is also interpreted as a live cell, but for convention
+it is best to stick to using the character 'x'.) Each column of text is read
+as a column in the world, and each line of text represents a row.
+
+To use tilelife, first create a text file representing the initial state of
+the world. An example text file might look like this:
+
+..x..
+.x..x
+x..x.
+.xx..
+
+Then pass the text file as input to tilelife.py:
+$ tilelife.py [world_file_name]
+
+If no filename is given, tilelife reads from standard input. This can
+be useful for inputting worlds from the console without first writing them to a
+file.
+
+The output is a list of states, and finally a reson for stopping. The reason for
+stopping can be one of three things:
+- The population of the world falls to 0, in which case "extinct" is printed
+- The world reaches a stable state, in which case information on the number
+  of iterations and the period of the stable state is printed
+- A fixed number of iterations passes without either of the above occuring.
+  Currently the fixed number is 3000. For most small worlds this is out of
+  reach, but with a larger world it may be possible to go 3000 iterations
+  without reaching a stable state. tilelife isn't designed for worlds that
+  large, but if you must, you can modify MAX_ITERATIONS in the python file.
+
+LICENSE:
+=======================================
+Copyright © 2009 Paul Butler
+
+Licensed under the zlib/libpng license.
+
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+    1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+
+    2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+
+    3. This notice may not be removed or altered from any source
+    distribution.
+
